@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link href='https://fonts.googleapis.com/css?family=Architects+Daughter' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
+
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <title>Learning C++ for Java programmers</title>
+</head>
+
+<body>
+<header>
+    <div class="inner">
+        <h1>Lex</h1>
+        <h2>Effective learning C++</h2>
+        <a href="https://github.com/Collegeville/Lex" class="button"><small>View project on</small> GitHub</a>
+    </div>
+</header>
+
+<div id="content-wrapper">
+    <div class="inner clearfix" align="justify">
+        <section id="main-content">
+            <p>
+                <a href="https://en.wikipedia.org/wiki/C%2B%2B">C++ </a>
+                is a powerful object oriented language, which is known for its performance, efficiency, and flexibility
+                due to its ability to manipulate low-level memory. The C++ syntax is quite similar to Java syntax so
+                Java programmers will find it easy to pick up the language.
+            </p>
+            <h4>Resources</h4>
+            There are many detail tutorials online about C++, here are the two popular ones:
+            <ul>
+                <li><a href="http://www.cplusplus.com/doc/tutorial/">cplusplus.com</a></li>
+                <li><a href="http://www.cprogramming.com/tutorial/c++-tutorial.html">cprogramming.com</a></li>
+            </ul>
+            If you prefer book-like tutorials, here are the two recommendations:
+            <ul>
+                <li>
+                    <a href="http://www.cplusplus.com/files/tutorial.pdf">C++ Language tutorial</a>
+                    , by Juan Solie, 2007
+                </li>
+                <li>
+                    <a href="http://www.tutorialspoint.com/cplusplus/cpp_tutorial.pdf">Learn C++ programming language</a>
+                    , by Tutorialspoint
+                </li>
+            </ul>
+
+            <h4>Tips for leaning C++</h4>
+            <ol>
+                <li>Always comment your code because C++ did not help you as much in finding mistakes.</li>
+                <li>Learning carefully all the syntax in C++. Although C++ is quite similar to Java,
+                    programming with correct syntax always is priority.</li>
+                <li>Distinguish clearly between call by value and call by reference and know when to use.</li>
+                <li>Learning C++ data collection is also necessary because it does not as much data collection as Java.</li>
+                <li>Keep practising everyday with reading book and doing exercise.</li>
+            </ol>
+
+            <h4>Exercises</h4>
+            Here are some quick exercises for you to test your knowledge and skills
+            <ol>
+                <li>
+                    Write a program to convert temperature from Celsius to Fahrenheit and vice versa.<br>
+                    <a href="#ex1" onclick="toggle_visibility('ex1');">Toggle answer</a>
+                    <pre id="ex1" style="display: none"><code>
+#include &lt;iostream&gt;
+using namespace std;
+
+// function change Celsius to Fahrenheit
+double c_to_f(double c){
+    return c * 1.8 + 32;
+}
+
+// function change Celsius to Fahrenheit
+double f_to_c(double f){
+    return (f-32) * 5 / 9;
+}
+
+int main(){
+    double c;
+    double f;
+    cout << "Enter c degree values: ";
+
+    // print result
+    for(int i = 0; i < 5; i++){
+        cin >> c;
+        cout << c << " degree C equals " << c_to_f(c) << " degree F" << endl;
+    }
+    cout << "Enter f degree values: ";
+    for(int i = 0; i < 5; i++){
+        cin >> f;
+        cout << f << " degree F equals " << f_to_c(f) << " degree C" << endl;
+    }
+}
+                    </code></pre>
+                <li>Write a program that will terminate if user type 5 otherwise keep running.<br>
+                    <a href="#ex2" onclick="toggle_visibility('ex2');">Toggle answer</a>
+                    <pre id="ex2" style="display: none"><code>
+#include &lt;iostream&gt;
+using namespace std;
+
+int main(){
+    int a = 1;
+    while(a!=5){
+        cin >> a;
+        // check the input is not digit
+        if(cin.fail()){
+            cout << "Invalid input"<< endl;
+            cin.clear();
+            cin.ignore(10000, '\n');
+        }
+    }
+    cout << "It cannot be 5"<< endl;
+    return 0;
+}
+                    </code></pre>
+                <li>Write a program to calculate area and circumference of circle for given radius.<br>
+                    <a href="#ex3" onclick="toggle_visibility('ex3');">Toggle answer</a>
+                    <pre id="ex3" style="display: none"><code>
+#include &lt;iostream&gt;
+#include &lt;iomanip&gt;
+using namespace std;
+
+// function to calculate area and circumference
+void areaAndCircumference(double r, double* a, double *c){
+    const double pi = 3.1416;
+    *a = pi * r * r;
+    *c = 2.0 * pi * r;
+    r = 0;
+}
+
+int main(){
+    double r, c, a;
+    cout << "Enter the radius: ";
+    cin >> r;
+    // call function by references
+    areaAndCircumference(r, &a, &c);
+    cout << "Area: " << a << ". Circumference: " << c << endl;;
+    cout << r << endl;
+    return 0;
+}
+                </code></pre>
+            <li>Write a program to print all permutation of the given string<br>
+                <a href="#ex4" onclick="toggle_visibility('ex4');">Toggle answer</a>
+                <pre id="ex4" style="display: none"><code>
+#include &lt;iostream&gt;
+#include &lt;string&gt;
+using namespace std;
+
+// function to swap two element in array
+void swap(char *a, char *b){
+    char temp;
+    temp = *a;
+    *a = *b;
+    *b = temp;
+}
+
+// recursive function to print all permutation
+void recursive_permutation(char *arr, int len, int position){
+    // base case
+    if(position == len - 1){
+        printf("%s\n", arr);
+    }
+    // recursive
+    else{
+        for(int i = position; i < len; i++){
+            swap((arr+position), (arr+i));
+            recursive_permutation(arr, len, position+1);
+            swap((arr+position), (arr+i));
+        }
+    }
+}
+
+int main(){
+    char array[] = "abcd";
+    int len = strlen(array);
+    recursive_permutation(array, len, 0);
+}
+                </code></pre>
+                <li>Write a program to make a guessing game with the following rules:<br>
+                    &nbsp;Part 1: Computer generate a random number from 1 to 100. You guess until correct.<br>
+                    &nbsp;Part 2: User think a number from 1 to 100. Train computer to guess correctly in less than 8 guesses.
+                    <a href="#ex5" onclick="toggle_visibility('ex5');">Toggle answer</a>
+                    <pre id="ex5" style="display: none"><code>
+#include &lt;iostream&gt;
+using namespace std;
+
+// Part 1: User guesses
+int guessNum(){
+    int value;
+    int count = 0;
+    int v = rand() % 100 + 1;
+    cout<< "Guess a number: ";
+    cin>>value;
+    while (true){
+        count ++;
+        if(value < v){
+            cout << "Too low" << endl;
+        }
+        else if(value > v){
+            cout << "Too high" << endl;
+        }
+        else{
+            cout << "You are correct after " << count << " guesses" << endl;
+            return 0;
+        }
+        cin>>value;
+    }
+    return 0;
+}
+
+// Part 2: Computer guesses
+int guessUserNum(){
+    char decide;
+    int count = 0;
+    int min = 0;
+    int max = 100;
+    while (true){
+        int guess = (min+max)/2;
+        cout << "Computer guesses " << guess << ". Is it higher(h), lower(l) than your number, or correct(c-default value)" << endl;
+        count++;
+        cin >> decide;
+        if(decide == 'l'){
+            min = guess + 1;
+        }
+        else if(decide == 'h'){
+            max = guess - 1;
+        }
+        else{
+            cout << "Correct after " << count << " guesses" << endl;
+            return 0;
+        }
+
+    }
+    return 0;
+}
+
+int main(){
+    guessNum();
+    guessUserNum();
+}
+                </code></pre>
+                <li>*Write a program that asks user to enter the number of pancakes eaten  by 10 different people.<br>
+                    &nbsp; Part 1: Print the person eat the least and eat the most along with their number of pancakes. <br>
+                    &nbsp; Part 2: Display list of people in order of number of pancakes eaten.<br>
+                    &nbsp; Sample run:<br>
+                    <blockquote>
+                    &nbsp;&nbsp; &nbsp;&nbsp;       Person 4: ate 10 pancakes<br>
+                    &nbsp;&nbsp; &nbsp;&nbsp;       Person 3: ate 7 pancakes<br>
+                    &nbsp;&nbsp; &nbsp;&nbsp;       Person 8: ate 4 pancakes<br>
+                    &nbsp;&nbsp; &nbsp;&nbsp;       ........................<br>
+                    &nbsp;&nbsp; &nbsp;&nbsp;       Person 5: ate 0 pancakes<br>
+                    </blockquote>
+                    <a href="#ex6" onclick="toggle_visibility('ex6');">Toggle answer</a>
+                    <pre id="ex6" style="display: none"><code>
+#include &lt;iostream&gt;
+using namespace std;
+
+// function to find people eat the most pancake
+int findMax(int arr[], int len){
+    int max;
+    int maxIndex;
+    max = arr[0];
+    for(int i = 1; i < len; i++){
+        if(arr[i]>max){
+            max = arr[i];
+            maxIndex = i;
+        }
+    }
+    return maxIndex;
+}
+
+// function to find people eat the least pancake
+int findMin(int arr[], int len){
+    int min;
+    int minIndex;
+    min = arr[0];
+    for(int i = 0; i < len; i++){
+        if(arr[i] < min){
+            min = arr[i];
+            minIndex = i;
+        }
+    }
+    return minIndex;
+}
+
+// display people in order
+int find_order(int arr[], int len, int indexes[]){
+    int result[len];
+    for(int i = 0; i < len -1; i++){
+        int maxIndex = i;
+        for(int j = i+1; j < len; j++){
+            if(arr[maxIndex] < arr[j]){
+                maxIndex = j;
+            }
+        }
+        int temp = arr[i];
+	    arr[i] = arr[maxIndex];
+	    arr[maxIndex] = temp;
+
+	    temp = indexes[i];
+	    indexes[i] = indexes[maxIndex];
+	    indexes[maxIndex] = temp;
+    }
+    return 0;
+}
+
+int main(){
+    int a, value;
+    int len = 10;
+    int arr[len];
+    for(int i = 0; i < len; i++){
+        cout << "Enter value: ";
+        cin >> value;
+        arr[i] = value;
+    }
+
+    int minIndex = findMin(arr, len);
+    cout << "Min is " << arr[minIndex] << endl;
+    cout << "Person " << minIndex + 1 << " ate " << arr[minIndex] << ", the least number of pancake" << endl;
+
+    int maxIndex = findMax(arr, len);
+    cout << "Max is " << arr[maxIndex] << endl;
+    cout << "Person " << maxIndex + 1 << " ate " << arr[maxIndex] << ", the most number of pancake" << endl;
+
+    cout << "Display in order: " << endl;
+
+    int sorted_array[len];
+    int sorted_indexes[len];
+    for(int i = 0; i < len; i++){
+        sorted_array[i] = arr[i];
+        sorted_indexes[i] = i;
+    }
+    find_order(sorted_array, len, sorted_indexes);
+    for(int i = 0; i < len; i++){
+        cout<< "Person " << sorted_indexes[i] + 1 <<  " ate: " << sorted_array[i] << " pancakes" << endl;
+
+    }
+    return 0;
+}
+                </code></pre>
+
+            </ol>
+            <h4><a href="index.html">Back to hompage</a></h4>
+        </section>
+
+        <aside id="sidebar">
+            <a href="https://github.com/Collegeville/Lex/zipball/master" class="button">
+                <small>Download</small>
+                .zip file
+            </a>
+            <a href="https://github.com/Collegeville/Lex/tarball/master" class="button">
+                <small>Download</small>
+                .tar.gz file
+            </a>
+
+            <p class="repo-owner"><a href="https://github.com/Collegeville/Lex"></a> is maintained by <a href="https://github.com/Collegeville">Collegeville</a>.</p>
+
+        </aside>
+    </div>
+</div>
+
+<script type="text/javascript">
+    function toggle_visibility(id) {
+       var e = document.getElementById(id);
+       if(e.style.display == 'block')
+          e.style.display = 'none';
+       else
+          e.style.display = 'block';
+    }
+</script>
+</body>
+</html>
