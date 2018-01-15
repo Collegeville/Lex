@@ -2,16 +2,28 @@
   url: "/"
   side: left
 
-- title: "Discussions That Work"
-  url: "/DiscussionsThatWork/"
+- title: "Software Engineering"
+  url: "/SoftwareEngineering/"
   side: left
 
-- title: "Presentations That Work"
-  url: "/PresentationsThatWork/"
+- title: "C++"
+  url: "/CPlusPlus/"
   side: left
 
-- title: "Recorded Presentations."
-  url: "/RecordedPresentations/"
+- title: "Kokkos"
+  url: "/GettingStartedWithKokkos/"
+  side: left
+
+- title: "Trilinos"
+  url: "/GettingStartedWithTrilinos/"
+  side: left
+
+- title: "Kanban"
+  url: "/GettingStartedWithKanban/"
+  side: left
+
+- title: "Documentation"
+  url: "/WritingGoodDocumentation/"
   side: left
 
 - title: "Search"
